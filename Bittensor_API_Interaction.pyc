@@ -1,0 +1,22 @@
+# Python example for interacting with Bittensor API
+import requests
+
+def get_validator_nodes():
+    try:
+        url = "https://bittensor.com/api/validator_nodes"
+        response = requests.get(url)
+        if response.status_code == 200:
+            validator_nodes = response.json()
+            return validator_nodes
+        else:
+            print("Failed to fetch validator nodes data")
+            return None
+    except Exception as e:
+        print("An error occurred:", e)
+        return None
+
+# Example usage:
+validator_nodes = get_validator_nodes()
+if validator_nodes:
+    for node in validator_nodes:
+        print("Validator Node:", node)
